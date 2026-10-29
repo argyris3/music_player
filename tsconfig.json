@@ -1,20 +1,15 @@
 {
-  "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-    "strict": true,
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@/assets/*": [
-        "./assets/*"
-      ]
-    }
-  },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-  ]
+	"extends": "expo/tsconfig.base",
+	"compilerOptions": {
+		"strict": true,
+		"paths": {
+			"@/*": ["./src/*"],
+			"@/assets/*": ["./assets/*"],
+			"@apiDatabase/db": ["./node_modules/ta_data_mas/packages/apiDatabase-js/src/db/index.ts"],
+			"@apiDatabase/constants": ["./node_modules/ta_data_mas/packages/constants/src/index.ts"],
+			"@apiDatabase/types": ["./node_modules/ta_data_mas/packages/types/src/index.ts"]
+		}
+	},
+	"include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"],
+	"exclude": ["node_modules"]
 }
