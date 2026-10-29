@@ -31,7 +31,7 @@ export const TracksList = ({
 	const handleTrackSelect = async (selectedTrack: Track) => {
 		if (isSelectingTrack.current) return
 
-		const trackIndex = tracks.findIndex((track) => track.url === selectedTrack.url)
+		const trackIndex = tracks.indexOf(selectedTrack)
 
 		if (trackIndex === -1) return
 

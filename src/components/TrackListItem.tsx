@@ -19,7 +19,14 @@ export const TracksListItem = ({
 }: TracksListItemProps) => {
 	const { playing } = useIsPlaying()
 
-	const isActiveTrack = useActiveTrack()?.url === track.url
+	const activeTrack = useActiveTrack()
+	const isActiveTrack =
+		activeTrack != null &&
+		(activeTrack.id != null && track.id != null
+			? activeTrack.id === track.id
+			: activeTrack.url === track.url &&
+				activeTrack.title === track.title &&
+				activeTrack.artist === track.artist)
 
 	return (
 		<TouchableHighlight onPress={() => handleTrackSelect(track)}>

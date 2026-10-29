@@ -10,18 +10,22 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npm install
    ```
 
-2. Start the app
+2. Build and install the native development app (required for Track Player)
 
    ```bash
-   npx expo start
+   npm run android
    ```
 
-In the output, you'll find options to open the app in a
+For iOS, use `npm run ios` on a Mac with Xcode installed. Then start Metro for
+the installed development app with:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+```bash
+npm start
+```
+
+`react-native-track-player` requires native code and is not available in Expo
+Go. Rebuild the development app after changing native dependencies or upgrading
+Expo.
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 

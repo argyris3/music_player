@@ -1,11 +1,14 @@
 import { playbackService } from '@/constants/playbackService'
 import { colors } from '@/constants/tokens'
+// @ts-ignore TS config does not set `jsx` for this TSX hook module.
 import { useLogTrackPlayerState } from '@/hooks/useLogTrackPlayerState'
+// @ts-ignore TS config does not set `jsx` for this TSX hook module.
 import { useSetupTrackPlayer } from '@/hooks/useSetupTrackPlayer'
+// @ts-ignore TS config does not set `jsx` for this TSX store module.
 import { useLibraryStore } from '@/store/library'
 import { SplashScreen, Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
-import { useCallback, useEffect } from 'react'
+import { createElement, useCallback, useEffect } from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import TrackPlayer from 'react-native-track-player'
@@ -33,47 +36,49 @@ const App = () => {
 
 	useLogTrackPlayerState()
 
-	return (
-		<SafeAreaProvider>
-			<GestureHandlerRootView style={{ flex: 1 }}>
-				<RootNavigation />
-
-				<StatusBar style="auto" />
-			</GestureHandlerRootView>
-		</SafeAreaProvider>
+	return createElement(
+		SafeAreaProvider,
+		null,
+		createElement(
+			GestureHandlerRootView,
+			{ style: { flex: 1 } },
+			createElement(RootNavigation),
+			createElement(StatusBar, { style: 'auto' }),
+		),
 	)
 }
 
 const RootNavigation = () => {
-	return (
-		<Stack>
-			<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-
-			<Stack.Screen
-				name="player"
-				options={{
-					presentation: 'card',
-					gestureEnabled: true,
-					gestureDirection: 'vertical',
-					animationDuration: 400,
-					headerShown: false,
-				}}
-			/>
-
-			<Stack.Screen
-				name="(modals)/addToPlaylist"
-				options={{
-					presentation: 'modal',
-					headerStyle: {
-						backgroundColor: colors.background,
-					},
-					headerTitle: 'Add to playlist',
-					headerTitleStyle: {
-						color: colors.text,
-					},
-				}}
-			/>
-		</Stack>
+	return createElement(
+		Stack,
+		null,
+		createElement(Stack.Screen, {
+			name: '(tabs)',
+			options: { headerShown: false },
+		}),
+		createElement(Stack.Screen, {
+			name: 'player',
+			options: {
+				presentation: 'card',
+				gestureEnabled: true,
+				gestureDirection: 'vertical',
+				animationDuration: 400,
+				headerShown: false,
+			},
+		}),
+		createElement(Stack.Screen, {
+			name: '(modals)/addToPlaylist',
+			options: {
+				presentation: 'modal',
+				headerStyle: {
+					backgroundColor: colors.background,
+				},
+				headerTitle: 'Add to playlist',
+				headerTitleStyle: {
+					color: colors.text,
+				},
+			},
+		}),
 	)
 }
 
