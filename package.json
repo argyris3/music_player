@@ -39,7 +39,6 @@
     "shaka-player": "^4.16.51",
     "ta_data_mas": "^0.0.4",
     "ts-pattern": "^5.9.0",
-    "undefined": "react-native-menu/menu",
     "zustand": "^5.0.15"
   },
   "devDependencies": {
